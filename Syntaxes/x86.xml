@@ -5,191 +5,41 @@
 		<type>structured</type>
 		<preferred-file-extension>asm</preferred-file-extension>
 	</meta>
-	
+
 	<detectors>
-		<extension priority="1.0">s,S,asm</extension>
+		<extension priority="1.0">asm,s,S</extension>
 	</detectors>
-	
+
 	<indentation>
 	</indentation>
-	
+
 	<comments>
-		<multiline>
-			<starts-with>
-				<expression>/\*</expression>
-			</starts-with>
-			<ends-with>
-				<expression>\*/</expression>
-			</ends-with>
-		</multiline>
 		<single>
-			<expression>@</expression>
+			<expression>;</expression>
 		</single>
 	</comments>
-    
-    <brackets>
-        <pair open="[" close="]" />
-		<pair open="{" close="}" />
-		<pair open="(" close=")" />
-    </brackets>
-    
-    <surrounding-pairs>
-        <pair open="{" close="}" />
-        <pair open="[" close="]" />
-        <pair open="(" close=")" />
-        <pair open="&apos;" close="&apos;" />
-        <pair open="&quot;" close="&quot;" />
-    </surrounding-pairs>
-	
+
 	<scopes>
 		<scope name="x86.keyword.preprocessor">
-			<expression>\b(?i)(d(b|w|d|q|t|o|y)|res(b|w|d|q|t|o)|equ|times|align|alignb|sectalign|section|ptr|byte|word|dword|qword|incbin|)\b</expression>
+			<expression>\b(d(b|w|d|q|t|o|y)|res(b|w|d|q|t|o)|equ|times|align|alignb|sectalign|section|ptr|byte|word|dword|qword|incbin|BITS|ORG</expression>
 		</scope>
-	
+
 		<scope name="x86.identifier.method.routine">
 			<symbol type="method" />
 			<expression>^\s*\.?[a-zA-Z0-9]+_?[a-zA-Z0-9]*:</expression>
 		</scope>
 		
-		<scope name="x86.keyword.mnenomic.arithmetic">		
+		<scope name="x86.keyword.mnenomic.instructions">		
 			<expression>\b(?i)(v)?(aaa|aad|aam|aas|adc|add|addpd|addps|addsd|addss|addsubpd|addsubps|aesdec|aesdeclast|aesenc|aesenclast|aesimc|aeskeygenassist|and|andpd|andps|andnpd|andnps|arpl|blendpd|bmi|blendps|blendvpd|blendvps|bound|bsf|bsr|bswap|bt|btc|btr|bts|cbw|cwde|cdqe|clc|cld|cflush|clts|cmc|cmov(n?e|ge?|ae?|le?|be?|n?o|n?z)|cmp|cmppd|cmpps|cmps|cnpsb|cmpsw|cmpsd|cmpsq|cmpss|cmpxchg|cmpxchg8b|cmpxchg16b|comisd|comiss|cpuid|crc32|cvtdq2pd|cvtdq2ps|cvtpd2dq|cvtpd2pi|cvtpd2ps|cvtpi2pd|cvtpi2ps|cvtps2dq|cvtps2pd|cvtps2pi|cvtsd2si|cvtsd2ss|cvts2sd|cvtsi2ss|cvtss2sd|cvtss2si|cvttpd2dq|cvtpd2pi|cvttps2dq|cvttps2pi|cvttps2dq|cvttps2pi|cvttsd2si|cvttss2si|cwd|cdq|cqo|daa|das|dec|div|divpd|divps|divsd|divss|dppd|dpps|emms|enter|extractps|f2xm1|fabs|fadd|faddp|fiadd|fbld|fbstp|fchs|fclex|fnclex|fcmov(n?e|ge?|ae?|le?|be?|n?o|n?z)|fcom|fcmop|fcompp|fcomi|fcomip|fucomi|fucomip|fcos|fdecstp|fdiv|fdivp|fidiv|fdivr|fdivrp|fidivr|ffree|ficom|ficomp|fild|fincstp|finit|fnint|fist|fistp|fisttp|fld|fld1|fldl2t|fldl2e|fldpi|fldlg2|fldln2|fldz|fldcw|fldenv|fmul|fmulp|fimul|fnop|fpatan|fprem|fprem1|fptan|frndint|frstor|fsave|fnsave|fscale|fsin|fsincos|fsqrt|fst|fstp|fstcw|fnstcw|fstenv|fnstenv|fsts(w?)|fnstsw|fsub|fsubp|fisub|fsubr|fsubrp|fisubr|ftst|fucom|fucomp|fucompp|fxam|fxch|fxrstor|fxsave|fxtract|fyl2x|fyl2xp1|haddpd|haddps|husbpd|hsubps|idiv|imul|in|inc|ins|insb|insw|insd|insertps|int|into|invd|invlpg|invpcid|iret|iretd|iretq|lahf|lar|lddqu|ldmxcsr|lds|les|lfs|lgs|lss|lea|leave|lfence|lgdt|lidt|llgdt|lmsw|lock|lods|lodsb|lodsw|lodsd|lodsq|lsl|ltr|maskmovdqu|maskmovq|maxpd|maxps|maxsd|maxss|mfence|minpd|minps|minsd|minss|monitor|mov|movapd|movaps|movbe|movd|movq|movddup|movdqa|movdqu|movq2q|movhlps|movhpd|movhps|movlhps|movlpd|movlps|movmskpd|movmskps|movntdqa|movntdq|movnti|movntpd|movntps|movntq|movq|movq2dq|movs|movsb|movsw|movsd|movsq|movsd|movshdup|movsldup|movss|movsx|movsxd|movupd|movups|movzx|mpsadbw|mul|mulpd|mulps|mulsd|mulss|mwait|neg|not|or|orpd|orps|out|outs|outsb|outsw|outsd|pabsb|pabsw|pabsd|packsswb|packssdw|packusdw|packuswb|paddb|paddw|paddd|paddq|paddsb|paddsw|paddusb|paddusw|palignr|pand|pandn|pause|pavgb|pavgw|pblendvb|pblendw|pclmulqdq|pcmpeqb|pcmpeqw|pcmpeqd|pcmpeqq|pcmpestri|pcmpestrm|pcmptb|pcmptgw|pcmpgtd|pcmpgtq|pcmpistri|pcmpisrm|pdep|pext|pextrb|pextrd|pextrq|pextrw|phaddw|phaddd|phaddsw|phinposuw|phsubw|phsubd|phsubsw|pinsrb|pinsrd|pinsrq|pinsrw|pmaddubsw|pmadddwd|pmaxsb|pmaxsd|pmaxsw|pmaxsw|pmaxub|pmaxud|pmaxuw|pminsb|pminsd|pminsw|pminub|pminud|pminuw|pmovmskb|pmovsx|pmovzx|pmuldq|pmulhrsw|pmulhuw|pmulhw|pmulld|pmullw|pmuludw|pop|popa|popad|popcnt|popf|popfd|popfq|por|prefetch|psadbw|pshufb|pshufd|pshufhw|pshuflw|pshufw|psignb|psignw|psignd|pslldq|psllw|pslld|psllq|psraw|psrad|psrldq|psrlw|psrld|psrlq|psubb|psubw|psubd|psubq|psubsb|psubsw|psubusb|psubusw|test|ptest|punpckhbw|punpckhwd|punpckhdq|punpckhddq|punpcklbw|punpcklwd|punpckldq|punpckldqd|push|pusha|pushad|pushf|pushfd|pxor|prcl|rcr|rol|ror|rcpps|rcpss|rdfsbase|rdgsbase|rdmsr|rdpmc|rdrand|rdtsc|rdtscp|rep|repe|repz|repne|repnz|roundpd|roundps|roundsd|roundss|rsm|rsqrps|rsqrtss|sahf|sal|sar|shl|shr|sbb|scas|scasb|scasw|scasd|set(n?e|ge?|ae?|le?|be?|n?o|n?z)|sfence|sgdt|shld|shrd|shufpd|shufps|sidt|sldt|smsw|sqrtpd|sqrtps|sqrtsd|sqrtss|stc|std|stmxcsr|stos|stosb|stosw|stosd|stosq|str|sub|subpd|subps|subsd|subss|swapgs|syscall|sysenter|sysexit|sysret|teset|ucomisd|ucomiss|ud2|unpckhpd|unpckhps|unpcklpd|unpcklps|vbroadcast|vcvtph2ps|vcvtp2sph|verr|verw|vextractf128|vinsertf128|vmaskmov|vpermilpd|vpermilps|vperm2f128|vtestpd|vzeroall|vzeroupper|wait|fwait|wbinvd|wrfsbase|wrgsbase|wrmsr|xadd|xchg|xgetbv|xlat|xlatb|xor|xorpd|xorps|xrstor|xsave|xsaveopt|xsetbv|lzcnt|extrq|insertq|movntsd|movntss|vfmaddpd|vfmaddps|vfmaddsd|vfmaddss|vfmaddsubbpd|vfmaddsubps|vfmsubaddpd|vfmsubaddps|vfmsubpd|vfmsubps|vfmsubsd|vfnmaddpd|vfnmaddps|vfnmaddsd|vfnmaddss|vfnmsubpd|vfnmusbps|vfnmusbsd|vfnmusbss|vbroadcastss|vbroadcastsd|vbroadcastf128|vmaskmovps|vmaskmovpd|cvt|xor|cli|sti|hlt|nop|lock|wait|enter|leave|ret|loop(n?e|n?z)?|call|j(mp|n?e|n?ge?|n?ae?|le?|be?|n?o|n?z|n?c|n?p|n?b))\b</expression>
-			<capture number="1">
-				<scope name="x86.keyword">
-					<include syntax="self" collection="conditions" />
-				</scope>
-				<scope name="x86.invalid">
-					<expression>\w+</expression>
-				</scope>
-			</capture>
-			<capture number="2">
-				<scope name="x86.keyword">
-					<include syntax="self" collection="conditions" />
-				</scope>
-				<scope name="x86.invalid">
-					<expression>\w+</expression>
-				</scope>
-			</capture>
-		</scope>
-		
-		<scope name="x86.keyword.mnenomic.memory">		
-			<expression>\b(?i)v?(?:ldr|str)(?:d(\w{2})?|(?:(?:s?b|s?h)(\w{2})?|(\w{2})(?:s?b|s?h)?))(?-i)\b</expression>
-			<capture number="1">
-				<scope name="x86.keyword">
-					<include syntax="self" collection="conditions" />
-				</scope>
-				<scope name="x86.invalid">
-					<expression>\w+</expression>
-				</scope>
-			</capture>
-			<capture number="2">
-				<scope name="x86.keyword">
-					<include syntax="self" collection="conditions" />
-				</scope>
-				<scope name="x86.invalid">
-					<expression>\w+</expression>
-				</scope>
-			</capture>
-		</scope>
-		
-		<scope name="x86.keyword.mnenomic.memory">
-			<expression>\b(?i)(?:ldar[bh]?|ldax[pb(?:rh?)]|ldn?p|ldpsw|ldr[bh]?|ldrsb|ldrsh|ldrsw|ldtr[bh]?|ldtrsw|ldurb?|ldursb|ldursh|ldursw|ldx[pr]|ldxr[bh])(?-i)\b</expression>
-		</scope>
-		
-		<scope name="x86.keyword.mnenomic.memory">
-			<expression>\b(?i)(?:prfu?m)(?-i)\b</expression>
-		</scope>
-		
-		<scope name="x86.keyword.mnenomic.memory">
-			<expression>\b(?i)(?:stlr[bh]?|stlx[pb(?:rh?)]|stn?p|str[bh]?|sttr[bh]?|stur[nh]?|stx[pb(?:rh?)])(?-i)\b</expression>
-		</scope>
-		
-		<scope name="x86.keyword.mnenomic.memory">
-			<expression>\b(?i)(dc[dubi](?:[qw]u?)?)|area|space|fill\b</expression>
-		</scope>
-		
-		<scope name="x86.keyword.mnenomic.multiple.memory">
-			<expression>\b(?i)(?:ldm(?:ia)?|ldmf[da]|ldmd[ab]|ldmea|ldmib|ldmed|v?(?:push|pop)|stm(?:ia)?|stmd[ab]|stmed|stmfd|stmib|smfa(?:\.n|\.w)?)(?-i)\b</expression>
-		</scope>
-		
-		<scope name="x86.keyword.mnenomic.memory">		
-			<expression>\b(?i)(?:mov(?:w|t)?|pac(?:dz?[a|b]|ga|i(?:[a|b](?:1716|sp|z)?)|z[a|b])|swi|svc|hvc|dmb|clrex|dsb|isb|tlbi|b(?:l|l?x|l?r)?|(?:i|e)?ret(?:aa|ab)?)(?:(?:(?=s)s(\w{2})?)|(\w{2})s?)?(?-i)\b</expression>
-			<capture number="1">
-				<scope name="x86.keyword">
-					<include syntax="self" collection="conditions" />
-				</scope>
-				<scope name="x86.invalid">
-					<expression>\w+</expression>
-				</scope>
-			</capture>
-			<capture number="2">
-				<scope name="x86.keyword">
-					<include syntax="self" collection="conditions" />
-				</scope>
-				<scope name="x86.invalid">
-					<expression>\w+</expression>
-				</scope>
-			</capture>
-		</scope>
-		
-		<scope name="x86.definition.directive">
-			<expression>\b(?i)(def(b|w|s)|equ|align\s.+\.s)(?-i)\b</expression>
-		</scope>
-		
-		<scope name="x86.keyword.directive.control.cpu">
-			<expression>\b(?i)((wf[ei])|cps(i[de])?)(?-i)\b</expression>
-		</scope>
-	
-		<scope name="x86.keyword.directive.control">
-			<expression>\.(?i)(globl|global|extern|weak|macro|endm|purgem|section|text|data|bss|arm|align|balign|irp|rept|endr|(un)?req|error|short|(end)?func|hidden|type|cpu|fpu|arch|code|syntax|altmacro|object_arch|word|int|string|thumb(_set)?|set|pragma|undef|line|get)(?-i)\b</expression>
-		</scope>
-		
-		<scope name="x86.keyword.control.evaluation">
-			<expression>\b\=</expression>
-		</scope>	
-	
-		<scope name="x86.comment.nop">
-			<expression>\b(?i)nop(\w{2})?(?-i)\b</expression>
-			<capture number="1">
-				<scope name="x86.comment.nop">
-					<include syntax="self" collection="conditions" />
-				</scope>
-				<scope name="x86.invalid">
-					<expression>\w+</expression>
-				</scope>
-			</capture>
 		</scope>
 
-		<scope name="x86.value.memaddress">
-			<expression>\[[ \t]*(\w+),[ \t]*([a-zA-Z0-9_\#-]+)[ \t]*\]!?</expression>
-			<capture number="1">
-				<include syntax="self" collection="registers" />
-			</capture>
-			<capture number="2">
-				<include syntax="self" collection="numerics" />
-				<include syntax="self" collection="registers" />
-				<include syntax="self" collection="variables" />
-			</capture>
-		</scope>
-	
-		<scope name="x86.value.stack">
-			<starts-with>
-				<expression>\{\h*</expression>
-			</starts-with>
-			<ends-with>
-				<expression>\h*\}\^?</expression>
-			</ends-with>
-			<subscopes>
-				<include syntax="self" collection="registers_list" />
-			</subscopes>
-		</scope>
-	
 		<include syntax="self" collection="registers" />
-		<include syntax="self" collection="values" />
 		<include syntax="self" collection="definitions" />
+		<include syntax="self" collection="values" />
 		<include syntax="self" collection="strings" />
 		<include syntax="self" collection="comments" />
 	</scopes>
-	
+
 	<collections>
 		<!-- Identifiers / Registers -->
 		<collection name="registers">
@@ -212,8 +62,7 @@
 				</capture>
 			</scope>
 		</collection>
-				
-	
+
 		<!-- Definitions -->	
 		<collection name="definitions">
 			<scope name="x86.variable.name">
@@ -265,30 +114,6 @@
 				<capture number="2" name="x86.comment.content" />
 			</scope>
 		</collection>
-		
-		<!-- Conditions -->
-		<collection name="conditions">
-			<scope name="x86.keyword.conditions">
-				<strings>
-					<string>ne</string>
-					<string>eq</string>
-					<string>cs</string>
-					<string>hs</string>
-					<string>cc</string>
-					<string>lo</string>
-					<string>mi</string>
-					<string>pl</string>
-					<string>vs</string>
-					<string>vc</string>
-					<string>hi</string>
-					<string>ls</string>
-					<string>lt</string>
-					<string>le</string>
-					<string>gt</string>
-					<string>ge</string>
-					<string>al</string>
-				</strings>
-			</scope>
-		</collection>	
+
 	</collections>
 </syntax>
