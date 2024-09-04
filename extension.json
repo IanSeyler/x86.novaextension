@@ -3,7 +3,7 @@
     "name": "x86 Assembly",
     "organization": "Ian Seyler",
     "description": "Syntax highlighting for x86 (and x86-64) assembly files in Nova",
-    "version": "1.0",
+    "version": "1.0.1",
     "categories": ["languages"],
     "license": "MIT",
     "repository": "https://github.com/IanSeyler/x86.novaextension",
