@@ -21,7 +21,7 @@
 
 	<scopes>
 		<scope name="x86.keyword.preprocessor">
-			<expression>(equ|times|align|alignb|sectalign|section|ptr|byte|word|dword|qword|incbin|BITS|ORG|d(b|w|d|q))</expression>
+			<expression>\b(?i)(v)?equ|times|align|alignb|sectalign|section|ptr|byte|word|dword|qword|incbin|BITS|ORG|d(b|w|d|q))\b</expression>
 		</scope>
 
 		<scope name="x86.identifier.method.routine">
